@@ -1,10 +1,10 @@
 import { action, makeObservable, observable } from "mobx";
 import Store, { IStoreParams } from "../../utils/Store/Store";
 
-export class PostStore<TModel> extends Store<TModel> {
+export class PostStore<Params extends IStoreParams> extends Store<Params> {
   private _text = "";
 
-  constructor(params: IStoreParams) {
+  constructor(params: Params) {
     super(params);
 
     makeObservable<this, "_text">(this, {

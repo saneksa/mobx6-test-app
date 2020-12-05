@@ -16,22 +16,22 @@ export interface IStoreParams {
   model: IModel;
 }
 
-class Store<TModel> {
+class Store<Params extends IStoreParams> {
   private _data = undefined;
   private _loading = false;
   private _error = undefined;
-  private _model?: TModel;
+  private _model?: InstanceType<Params["model"]>;
   private tModel;
 
-  constructor(params: IStoreParams) {
+  constructor(params: Params) {
     this.tModel = params.model;
 
     makeObservable<this, TPrivateStoreField>(
       this,
       {
-        _data: observable,
+        _data: observable.ref,
         _loading: observable,
-        _model: observable,
+        _model: observable.ref,
         _error: observable,
         data: computed,
         isLoading: computed,
@@ -46,12 +46,12 @@ class Store<TModel> {
     );
   }
 
-  //----------------------------------------GETTERS------------------------------------//
+  //----------------------------------------COMPUTED------------------------------------//
   public get data() {
     return this._data;
   }
 
-  public get model(): TModel | undefined {
+  public get model(): InstanceType<Params["model"]> | undefined {
     return this._model;
   }
 
@@ -91,7 +91,7 @@ class Store<TModel> {
 
     if (data) {
       runInAction(() => {
-        this._data = data?.[0];
+        this._data = data?.[Math.round(Math.random() * 50)];
         this._error = undefined;
         this._model = new this.tModel(this._data);
         this._loading = false;

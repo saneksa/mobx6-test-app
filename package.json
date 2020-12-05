@@ -15,8 +15,10 @@
     "react-scripts": "4.0.1",
     "typescript": "4.1.2",
     "mobx": "6.0.4",
-    "mobx-react-lite": "3.1.6",
-    "mobx-logger": "0.7.1"
+    "mobx-react": "7.0.5",
+    "mobx-logger": "0.7.1",
+    "lodash": "4.17.20",
+    "@types/lodash": "4.14.165"
   },
   "scripts": {
     "start": "react-scripts start",

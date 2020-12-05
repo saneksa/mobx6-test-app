@@ -16,7 +16,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "importHelpers": true,
-    "importsNotUsedAsValues": "error"
+    "importsNotUsedAsValues": "error",
+    "useDefineForClassFields": true
   },
   "include": ["src"]
 }
