@@ -1,27 +1,26 @@
-import { FC, memo } from "react";
+import { observer } from "mobx-react";
+import type { FC } from "react";
+import type PostModel from "../../models/PostModel";
 
 interface IPostProps {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
+  model: PostModel;
 }
 
-const Post: FC<IPostProps> = ({ body, title, id }) => {
+const Post: FC<IPostProps> = ({ model }) => {
   console.warn("Post rerender");
 
   return (
-    <div key={id}>
+    <div key={model.id}>
       <div>
         Title:
-        <span>{title}</span>
+        <span>{model.title}</span>
       </div>
       <div>
         Body:
-        <span>{body}</span>
+        <span>{model.body}</span>
       </div>
     </div>
   );
 };
 
-export default memo(Post);
+export default observer(Post);

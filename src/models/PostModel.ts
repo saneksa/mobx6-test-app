@@ -1,3 +1,5 @@
+import { makeAutoObservable } from "mobx";
+
 type TPostParams = {
   userId: number;
   id: number;
@@ -15,6 +17,12 @@ class PostModel {
     this.id = id;
     this.userId = userId;
     this.body = body;
+    this.title = title;
+
+    makeAutoObservable(this);
+  }
+
+  public setTitle(title: string) {
     this.title = title;
   }
 }

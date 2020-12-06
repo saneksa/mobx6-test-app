@@ -14,6 +14,7 @@ const Search: FC<ISearchProps> = ({ value, onChange, placeholder }) => {
     setState(value);
   }, [value]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedValue = useCallback(
     debounce((value: string) => {
       onChange(value);

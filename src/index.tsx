@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { configure } from "mobx";
-import { enableLogging } from "mobx-logger";
+//import { enableLogging } from "mobx-logger";
+import "antd/dist/antd.css";
 
 configure({
   useProxies: "never",

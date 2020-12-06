@@ -1,13 +1,13 @@
 import { runInAction } from "mobx";
-import { observer, useLocalStore } from "mobx-react";
+import { observer, useLocalObservable } from "mobx-react";
 import { FC, useCallback, useEffect } from "react";
 
-const Counter: FC = (props) => {
-  const numbersArr = useLocalStore<number[]>(() => []);
+const Counter: FC = () => {
+  const numbersArr = useLocalObservable<number[]>(() => []);
 
   useEffect(() => {
     console.warn("isArray ", Array.isArray(numbersArr));
-  }, []);
+  }, [numbersArr]);
 
   console.warn("Counter rerender");
 
@@ -15,7 +15,7 @@ const Counter: FC = (props) => {
     runInAction(() => {
       numbersArr.push(Math.round(Math.random() * 100));
     });
-  }, []);
+  }, [numbersArr]);
 
   return (
     <div>
